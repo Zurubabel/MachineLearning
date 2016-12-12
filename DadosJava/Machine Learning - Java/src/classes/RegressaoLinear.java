@@ -1,6 +1,7 @@
 package classes;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /*
     y = a * bx
@@ -11,11 +12,11 @@ import java.util.ArrayList;
 */
 
 public class RegressaoLinear {
-    private ArrayList<DadosRegressao> listaDadosRegressao;
+    private List<DadosRegressao> listaDadosRegressao;
     private double t0;
     private double t1;
     
-    public RegressaoLinear(ArrayList<DadosRegressao> dadosRegressao) {
+    public RegressaoLinear(List<DadosRegressao> dadosRegressao) {
         this.t0 = 0;
         this.t1 = 0;
         
@@ -24,6 +25,10 @@ public class RegressaoLinear {
     
     public double retornarPredicao(double x) {
         return this.t0 + this.t1 * x;
+    }
+    
+    public double retornarFuncaoCusto() {
+        return 0.0;
     }
 
     public double getT0() {
