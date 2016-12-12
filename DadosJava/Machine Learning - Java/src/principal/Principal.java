@@ -5,6 +5,8 @@
  */
 package principal;
 
+import classes.RegressaoLinear;
+
 /**
  *
  * @author Aulas
@@ -12,6 +14,10 @@ package principal;
 public class Principal {
     
     public static void main(String args[]) {
+        RegressaoLinear r = new RegressaoLinear();
+        
+        System.out.println(r.retornarPredicao(7));
+        
         
     }
     
