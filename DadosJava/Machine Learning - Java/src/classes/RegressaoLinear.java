@@ -1,6 +1,5 @@
 package classes;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /*
@@ -15,10 +14,14 @@ public class RegressaoLinear {
     private List<DadosRegressao> listaDadosRegressao;
     private double t0;
     private double t1;
-    
+    private double taxaAprendizado;
+    private int qtVezes;    
     public RegressaoLinear(List<DadosRegressao> dadosRegressao) {
         this.t0 = 1;
         this.t1 = 0;
+        
+        this.taxaAprendizado = 0.01;
+        this.qtVezes = 50;
         
         this.listaDadosRegressao = dadosRegressao;
     }
@@ -33,6 +36,15 @@ public class RegressaoLinear {
             soma += Math.pow((retornarPredicao(d.x) - d.y), 2);
         }
         return soma / (2 * this.listaDadosRegressao.size()) ;
+    }
+    
+    public void calcularGradientDescent() {
+        double tempT0 = this.t0;
+        double tempT1 = this.t1;
+        int i = 0;
+        while (i < this.qtVezes) {
+            
+        }
     }
 
     public double getT0() {
