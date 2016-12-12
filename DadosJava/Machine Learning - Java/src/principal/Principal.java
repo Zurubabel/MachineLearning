@@ -24,7 +24,7 @@ public class Principal {
         
         RegressaoLinear r = new RegressaoLinear(dadosRegressao);
         
-        System.out.println(r.retornarPredicao(7));
+        System.out.println(r.retornarFuncaoCusto());
         
         
     }

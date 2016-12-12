@@ -17,7 +17,7 @@ public class RegressaoLinear {
     private double t1;
     
     public RegressaoLinear(List<DadosRegressao> dadosRegressao) {
-        this.t0 = 0;
+        this.t0 = 1;
         this.t1 = 0;
         
         this.listaDadosRegressao = dadosRegressao;
@@ -28,7 +28,11 @@ public class RegressaoLinear {
     }
     
     public double retornarFuncaoCusto() {
-        return 0.0;
+        double soma = 0; 
+        for(DadosRegressao d : this.listaDadosRegressao) {
+            soma += Math.pow((retornarPredicao(d.x) - d.y), 2);
+        }
+        return soma / (2 * this.listaDadosRegressao.size()) ;
     }
 
     public double getT0() {
