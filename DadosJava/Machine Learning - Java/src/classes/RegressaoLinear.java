@@ -17,11 +17,11 @@ public class RegressaoLinear {
     private double taxaAprendizado;
     private int qtVezes;    
     public RegressaoLinear(List<DadosRegressao> dadosRegressao) {
-        this.t0 = 1;
+        this.t0 = 0;
         this.t1 = 0;
         
-        this.taxaAprendizado = 0.01;
-        this.qtVezes = 50;
+        this.taxaAprendizado = 0.1;
+        this.qtVezes = 2000;
         
         this.listaDadosRegressao = dadosRegressao;
     }
@@ -39,11 +39,21 @@ public class RegressaoLinear {
     }
     
     public void calcularGradientDescent() {
-        double tempT0 = this.t0;
-        double tempT1 = this.t1;
-        int i = 0;
+        int i = 0;       
+        double tempT0;
+        double tempT1;
         while (i < this.qtVezes) {
+            tempT0 = 0;
+            tempT1 = 0;
             
+            for(DadosRegressao d : this.listaDadosRegressao) {
+                tempT0 += (-(1.0/this.listaDadosRegressao.size()) * (d.y - this.retornarPredicao(d.x)));
+                tempT1 += (-(1.0/this.listaDadosRegressao.size()) * (d.y - this.retornarPredicao(d.x)) * d.x);
+            }        
+            this.t0 -= tempT0 * this.taxaAprendizado;
+            this.t1 -= tempT1 * this.taxaAprendizado;
+            
+            i++;            
         }
     }
 
